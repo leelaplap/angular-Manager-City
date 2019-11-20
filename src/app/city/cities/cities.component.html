@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="row d-flex justify-content-center">
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"
+             (keyup)="filter($event)">
+    </form>
+
+    <button class="btn btn-success" (click)="showImage()">Hide/Show</button>
+    <div class="col-12">
+      <table class="table">
+        <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Name</th>
+          <ng-container *ngIf="showImg">
+            <th scope="col">Image</th>
+          </ng-container>
+          <th scope="col">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let city of listCity let i = index">
+          <th scope="row">{{i + 1}}</th>
+          <td>{{city.name}}</td>
+          <ng-container *ngIf="showImg">
+            <td>
+              <img src="{{city.image}}" alt="" width="{{widthImg}}">
+            </td>
+          </ng-container>
+          <td>
+            <button class="btn btn-danger" (click)="delete(i)">Delete</button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
